@@ -185,9 +185,6 @@ cd backend
 # Install dependencies
 npm install
 
-# Create environment file
-cp .env.example .env
-# Edit .env if needed (defaults work for local setup)
 
 # Start the server
 npm run dev      # development (nodemon, auto-reload)
