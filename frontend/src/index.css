@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-950: #07070a;
+  --ink-900: #0d0d14;
+  --ink-800: #1a1a28;
+  --ink-700: #26263c;
+  --ink-600: #333350;
+  --acid: #a3ff47;
+  --coral: #ff6b6b;
+  --sky: #47c5ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ink-950);
+  color: #e8e8f0;
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-600);
+  border-radius: 3px;
+}
+
+/* Noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+@layer components {
+  .card {
+    @apply bg-ink-900 border border-ink-700 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-acid text-ink-950 font-display font-bold px-6 py-3 rounded-xl 
+           hover:bg-acid-light transition-all duration-200 
+           disabled:opacity-40 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-ink-800 text-ink-100 font-display font-medium px-6 py-3 rounded-xl 
+           border border-ink-600 hover:border-acid hover:text-acid
+           transition-all duration-200 active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full bg-ink-800 border border-ink-600 rounded-xl px-4 py-3
+           text-ink-100 placeholder-ink-400 font-body
+           focus:outline-none focus:border-acid focus:ring-1 focus:ring-acid/20
+           transition-colors duration-200;
+  }
+
+  .section-label {
+    @apply text-xs font-mono font-medium tracking-widest text-ink-400 uppercase;
+  }
+
+  .skill-tag {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-mono font-medium;
+  }
+}
